@@ -16,8 +16,11 @@ Tarmac is a Python package that helps you understand and document differences be
 - **Future AI Act Support**: Automated report generation for EU AI Act compliance (coming soon)
 
 ## Installation
+
 ```bash
-pip install tarmac
+git clone https://github.com/adrida/tarmac
+cd tarmac
+pip install -e .
 ```
 
 ## Quick Start
@@ -49,6 +52,10 @@ tarmac diff [MODEL_A] [MODEL_B] [OPTIONS]
 ```
 
 ### Sampling Strategies
+
+### Sampling Strategies
+
+Currently, Tarmac implements the sampling strategy from [Dynamic Interpretability for Model Comparison via Decision Rules (Rida et al., 2023)](https://link.springer.com/chapter/10.1007/978-3-031-74630-7_23), which uses the union of both models' training datasets:
 
 1. **Built-in Datasets**:
    ```bash
