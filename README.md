@@ -23,6 +23,10 @@ cd tarmac
 pip install -e .
 ```
 
+## Getting Started
+
+Check out our [quickstart notebook](notebooks/quickstart.ipynb) for an interactive example using a toy dataset to understand how Tarmac works.
+
 ## Quick Start
 
 Here's a simple example comparing two classification models using the iris dataset:
