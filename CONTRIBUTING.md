@@ -8,6 +8,15 @@ We love your input! We want to make contributing to Tarmac as easy and transpare
 - Proposing new features
 - Becoming a maintainer
 
+## Licensing
+
+By contributing to Tarmac, you agree that your contributions will be licensed under its GNU Affero General Public License v3.0 (AGPL-3.0).
+
+This means that:
+- Your contributions must be made available under the AGPL-3.0 license
+- Any modifications to the code, including when used to provide a network service, must be made available under AGPL-3.0
+- You grant Adam Rida and any future legal entities created to maintain and develop Tarmac (including but not limited to companies, organizations, or other corporate structures) the right to use your contributions under the AGPL-3.0 license
+
 ## Development Setup
 
 1. Fork and clone the repository:
@@ -111,5 +120,6 @@ We love feature requests! Please open an issue to suggest new features, and tag 
 - How this feature would help you
 - Any ideas about implementation
 
-## License
-By contributing, you agree that your contributions will be licensed under its MIT License. 
+## Any contributions you make will be under the AGPL-3.0 Software License
+
+When you submit code changes, your submissions are understood to be under the same [AGPL-3.0 License](https://www.gnu.org/licenses/agpl-3.0.en.html) that covers the project. By contributing, you agree that your contributions will be licensed under its AGPL-3.0 License. 

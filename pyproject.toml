@@ -10,7 +10,7 @@ authors = [
     { name = "Adam Rida", email = "adamrida.ra@gmail.com" }
 ]
 readme = "README.md"
-license = "MIT"
+license = "AGPL-3.0"
 requires-python = ">=3.11"
 keywords = ["machine-learning", "explainability", "model-comparison", "ai-compliance", "eu-ai-act"]
 classifiers = [

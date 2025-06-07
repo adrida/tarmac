@@ -2,7 +2,7 @@
 
 Explainable git diff for your ML models - EU AI act compliance in 1 command
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ## Overview
 
@@ -101,5 +101,5 @@ We welcome contributions! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GNU Affero General Public License v3.0 - see the LICENSE file for details. This license ensures that the community can use and contribute to the project while protecting against commercial exploitation. Any modifications of this software, including when offered as a service over a network, must be made available under the same license.
 
