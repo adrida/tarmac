@@ -16,4 +16,4 @@ repos:
         always_run: true
         language: system
         types: [python]
-        files: ^(tests/.*|tarmaccore/.*)\.py$
+        files: ^(tests/.*|tarmac/.*)\.py$

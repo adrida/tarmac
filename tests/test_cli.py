@@ -1,5 +1,5 @@
 from typer.testing import CliRunner
-from tarmaccore.cli import app
+from tarmac.cli import app
 
 
 def test_version():

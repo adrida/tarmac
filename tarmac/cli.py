@@ -4,12 +4,17 @@ from rich.panel import Panel
 from rich.console import Console
 from rich.text import Text
 from pathlib import Path
+from typing import Optional
 from .adapters import get_adapter
 from .delta.base import choose_builder
 from .explainers.deltaxplainer import DeltaXplainer
-from tarmaccore.data import load_table, union_datasets, load_builtin_dataset
+from tarmac.data import load_table, union_datasets, load_builtin_dataset
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer(
+    name="tarmac",
+    help="Explainable git diff for your ML models - EU AI act compliance in 1 command",
+    no_args_is_help=True,
+)
 console = Console()
 
 
@@ -17,6 +22,14 @@ console = Console()
 def callback(
     version: bool = typer.Option(False, "--version", "-v", help="Show version and exit")
 ):
+    """
+    🚀 Tarmac: Compare ML models and understand their differences.
+
+    This tool helps you:
+    - Compare predictions between any two ML models
+    - Generate human-readable explanations of differences
+    - Prepare documentation for EU AI Act compliance
+    """
     if version:
         rprint("Tarmac v0.1-dev")
         raise typer.Exit()
@@ -24,39 +37,106 @@ def callback(
 
 @app.command()
 def diff(
-    model_a: Path,
-    model_b: Path,
+    model_a: Path = typer.Argument(
+        ...,
+        help="Path to first model (supports .pkl, .joblib, or custom formats)",
+        show_default=False,
+    ),
+    model_b: Path = typer.Argument(
+        ...,
+        help="Path to second model to compare against model_a",
+        show_default=False,
+    ),
     sampling: str = typer.Option(
         "builtin",
-        help="Sampling strategy: 'builtin' (iris/diabetes) or 'union'",
+        "--sampling",
+        "-s",
+        help="Sampling strategy for comparison data:\n"
+        "- 'builtin': Use built-in datasets (iris/diabetes)\n"
+        "- 'union': Use your own datasets (requires --Xa, --ya, --Xb, --yb)",
         show_default=True,
     ),
-    data: str = typer.Option("iris", help="Which builtin dataset to use"),
-    Xa: Path = typer.Option(
-        None, "--Xa", help="Path to features for dataset A (CSV or NPY)"
+    data: str = typer.Option(
+        "iris",
+        "--data",
+        "-d",
+        help="Built-in dataset to use (when sampling='builtin'):\n"
+        "- 'iris': Classification dataset\n"
+        "- 'diabetes': Regression dataset",
+        show_default=True,
     ),
-    ya: Path = typer.Option(
-        None, "--ya", help="Path to target for dataset A (CSV or NPY)"
+    Xa: Optional[Path] = typer.Option(
+        None,
+        "--Xa",
+        help="Path to features for model_a (CSV/NPY, required if sampling='union')",
     ),
-    Xb: Path = typer.Option(
-        None, "--Xb", help="Path to features for dataset B (CSV or NPY)"
+    ya: Optional[Path] = typer.Option(
+        None,
+        "--ya",
+        help="Path to target for model_a (CSV/NPY, required if sampling='union')",
     ),
-    yb: Path = typer.Option(
-        None, "--yb", help="Path to target for dataset B (CSV or NPY)"
+    Xb: Optional[Path] = typer.Option(
+        None,
+        "--Xb",
+        help="Path to features for model_b (CSV/NPY, required if sampling='union')",
     ),
-    task: str = typer.Option("auto", help="classification|regression|auto"),
-    epsilon: float = typer.Option(0.05, help="epsilon for regression Δ"),
+    yb: Optional[Path] = typer.Option(
+        None,
+        "--yb",
+        help="Path to target for model_b (CSV/NPY, required if sampling='union')",
+    ),
+    task: str = typer.Option(
+        "auto",
+        "--task",
+        "-t",
+        help="Task type:\n"
+        "- 'auto': Automatically detect\n"
+        "- 'classification': For classification models\n"
+        "- 'regression': For regression models",
+    ),
+    epsilon: float = typer.Option(
+        0.05,
+        "--epsilon",
+        "-e",
+        help="Threshold for considering regression predictions different",
+    ),
     min_samples_leaf: float = typer.Option(
-        0.01, help="Minimum samples per leaf (fraction of dataset)"
+        0.01,
+        "--min-samples-leaf",
+        "-m",
+        help="Minimum samples per leaf as fraction of dataset (controls rule granularity)",
     ),
-    output: Path = typer.Option(
-        None, "--output", "-o", help="Output file path (.json or .txt)"
+    output: Optional[Path] = typer.Option(
+        None,
+        "--output",
+        "-o",
+        help="Save results to file:\n"
+        "- '.json': Machine-readable format\n"
+        "- '.txt': Human-readable format",
     ),
     user_friendly: bool = typer.Option(
-        False, "--uf", help="User friendly output format"
+        False,
+        "--uf",
+        help="Generate detailed, user-friendly explanations in output",
     ),
 ):
-    """Compare two models and output rule explanations of their differences."""
+    """Compare two ML models and explain their differences with human-readable rules.
+
+    Examples:
+        Compare two models using the iris dataset:
+            $ tarmac diff model_a.pkl model_b.pkl
+
+        Compare models with custom datasets:
+            $ tarmac diff model_a.pkl model_b.pkl --sampling union \\
+                --Xa features_a.csv --ya targets_a.csv \\
+                --Xb features_b.csv --yb targets_b.csv
+
+        Save analysis to a file with user-friendly explanations:
+            $ tarmac diff model_a.pkl model_b.pkl -o analysis.txt --uf
+
+        Compare regression models with custom threshold:
+            $ tarmac diff model_a.pkl model_b.pkl --task regression --epsilon 0.1
+    """
     from sklearn import model_selection
     import json
 

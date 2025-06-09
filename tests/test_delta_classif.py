@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 import tempfile
 import pathlib
-from tarmaccore.cli import app
+from tarmac.cli import app
 from typer.testing import CliRunner
 import pandas as pd
 from sklearn.model_selection import train_test_split

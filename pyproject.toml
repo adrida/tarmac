@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "tarmac"
@@ -10,14 +10,13 @@ authors = [
     { name = "Adam Rida", email = "adamrida.ra@gmail.com" }
 ]
 readme = "README.md"
-license = "AGPL-3.0"
+license = {text = "AGPL-3.0"}
 requires-python = ">=3.11"
 keywords = ["machine-learning", "explainability", "model-comparison", "ai-compliance", "eu-ai-act"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -37,6 +36,15 @@ dependencies = [
     "scipy",
     "scikit-learn",
     "scikit-learn-extra",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+    "pre-commit",
 ]
 
 [project.urls]
@@ -46,7 +54,8 @@ Repository = "https://github.com/adrida/tarmac.git"
 Issues = "https://github.com/adrida/tarmac/issues"
 
 [project.scripts]
-tarmac = "tarmaccore.cli:app"
+tarmac = "tarmac.cli:app"
 
-[tool.hatch.build.targets.wheel]
-packages = ["tarmaccore"]
+[tool.setuptools.packages.find]
+include = ["tarmac*"]
+exclude = ["tests*"]

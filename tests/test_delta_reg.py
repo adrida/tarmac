@@ -10,7 +10,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import warnings
 
-from tarmaccore.cli import app
+from tarmac.cli import app
 from typer.testing import CliRunner
 
 

@@ -3,6 +3,7 @@
 Explainable git diff for your ML models - EU AI act compliance in 1 command
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![CI](https://github.com/adrida/tarmac/actions/workflows/ci.yml/badge.svg)](https://github.com/adrida/tarmac/actions/workflows/ci.yml)
 
 ## Overview
 
@@ -14,6 +15,9 @@ Tarmac is a Python package that helps you understand and document differences be
 - **Explainable Differences**: Generate human-readable rules that explain where and how models differ
 - **Flexible Output**: Get results in JSON or text format, with optional user-friendly explanations
 - **Future AI Act Support**: Automated report generation for EU AI Act compliance (coming soon)
+
+![Tarmac Model Comparison Visualization](assets/diff_toy_example.png)
+*Visualization of model comparison: (left) Original dataset with ground truth labels, (middle) Decision boundaries for Model A (orange) vs Model B (green), (right) Areas of disagreement highlighted in purple.*
 
 ## Installation
 

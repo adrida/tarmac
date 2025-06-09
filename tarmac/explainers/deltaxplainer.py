@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
-from tarmaccore.explainers.base import IExplainer
+from tarmac.explainers.base import IExplainer
 
 
 class DeltaXplainer(IExplainer):
