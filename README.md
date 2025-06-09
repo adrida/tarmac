@@ -3,7 +3,7 @@
 Explainable git diff for your ML models - EU AI act compliance in 1 command
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![CI](https://github.com/adrida/tarmac/actions/workflows/ci.yml/badge.svg)](https://github.com/adrida/tarmac/actions/workflows/ci.yml)
+[![CI](https://github.com/adrida/tarmac/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/adrida/tarmac/actions/workflows/ci.yml)
 
 ## Overview
 
