@@ -12,7 +12,7 @@ from tarmac.data import load_table, union_datasets, load_builtin_dataset
 
 app = typer.Typer(
     name="tarmac",
-    help="Explainable git diff for your ML models - EU AI act compliance in 1 command",
+    help="Explainable git diff for your ML models",
     no_args_is_help=True,
 )
 console = Console()
@@ -28,7 +28,7 @@ def callback(
     This tool helps you:
     - Compare predictions between any two ML models
     - Generate human-readable explanations of differences
-    - Prepare documentation for EU AI Act compliance
+    - In the future: prepare documentation for EU AI Act compliance
     """
     if version:
         rprint("Tarmac v0.1-dev")
