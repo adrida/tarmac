@@ -17,11 +17,16 @@ Tarmac is a Python package that helps you understand and document differences be
 - **Flexible Output**: Get results in JSON or text format, with optional user-friendly explanations
 - **Future AI Act Support**: Automated report generation for EU AI Act compliance (coming soon)
 
+Based on the following paper:
+
+> Rida, A., Lesot, M. J., Renard, X., & Marsala, C. (2023). Dynamic Interpretability for Model Comparison via Decision Rules. In *DynXAI Workshop at ECML PKDD 2023*. [[arXiv]](https://arxiv.org/pdf/2309.17095.pdf)
+
 ![Tarmac Model Comparison Visualization](assets/diff_toy_example.png)
 *Visualization of model comparison: (left) Original dataset with ground truth labels, (middle) Decision boundaries for Model A (orange) vs Model B (green), (right) Areas of disagreement highlighted in purple.*
 
 ## Installation
 
+(pip install coming soon)
 ```bash
 git clone https://github.com/adrida/tarmac
 cd tarmac
